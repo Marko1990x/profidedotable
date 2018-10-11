@@ -72,72 +72,54 @@ public class Smart {
 		return true;
 	}
 	
-	/*
-	 * public void saveTermini(String path) {
+	
+	
+	
+	
+	public void saveProf(String path) {
 		
 		ArrayList<String>lines = new ArrayList<String>();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-		
-		for(int i = 0; i < this.listaTermina.size(); i++) {
+		for(int i = 0; i< this.listaobjekata.size(); i++) {
+			Objekat objekat = this.listaobjekata.get(i);
+			String Name = objekat.getName();
+			String Location = objekat.getLokacija();
+			int number = objekat.getNumberlocation();
+			String profOsecaj = objekat.getProfaOsecaj();
 			
-			TerminiOrd ord = this.listaTermina.get(i);
-			
-			int id = ord.getID();
-			String ime = ord.getIme();
-			String prezime = ord.getPrezime();
-			int VremePocetno = ord.getVremePocetno();
-			int VremeKrajnje = ord.getVremeKrajnje();
-			String datum = ord.getDatum();
-			
-			String line = id +"/"+ ime +"/"+ prezime +"/"+ VremePocetno +"/"+ VremeKrajnje
-					+"/"+ datum;
+			String line = Name +"/"+ Location +"/"+ number +"/"+ profOsecaj;
 			lines.add(line);
+			
+			try {
+				Files.write(Paths.get(path), lines, Charset.defaultCharset(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+			} catch (java.io.IOException e) {
+				System.out.println("Datoteka " + path + " nije pronadjena.");
+			}
+			
 		}
 		
-		try {
-			Files.write(Paths.get(path), lines, Charset.defaultCharset(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-		} catch (java.io.IOException e) {
-			System.out.println("Datoteka " + path + " nije pronadjena.");
-		}
 	}
 	
-	/*
-	 * 
-	0	private int ID;
-	1	private String ime;
-	2	private String prezime;
-	3	private int vremePocetno;
-	4	private int vremeKrajnje;
-	5	private LocalDate datum;
-	 
-	
-	public void loadTermini(String path) {
-		
-		this.listaTermina = new ArrayList<TerminiOrd>();
+	public void loadProf(String path) {
+		this.listaobjekata = new ArrayList<Objekat>();
 		List<String> lines;
 		try {
 			lines = Files.readAllLines(Paths.get(path), Charset.defaultCharset());
 			for (String line: lines) {
 				String[] attributes = line.split("/");
-				int id = Integer.parseInt(attributes[0]);
-				String ime = attributes[1];
-				String prezime = attributes[2];
-				int vremePocetno = Integer.parseInt(attributes[3]);
-				int vremeKranje = Integer.parseInt(attributes[4]);
-				String datum = attributes[5];
+				String Name = attributes[0];
+				String Location = attributes[1];
+				int number = Integer.parseInt(attributes[2]);
+				String profOsecaj = attributes[3];
 				
-				TerminiOrd ord = new TerminiOrd(id, ime, prezime, vremePocetno,
-						vremeKranje, datum);
-				this.listaTermina.add(ord);
+				Objekat objekat = new Objekat(Name, Location, number, profOsecaj);
+				this.listaobjekata.add(objekat);
+			
 			}
 			
 		} catch (java.io.IOException e) {
 			System.out.println("Datoteka " + path + " nije pronađena.");
 		}
-		
-		
 	}
-	 * 
-	 */
+	
 	
 }
