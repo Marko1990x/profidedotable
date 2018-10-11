@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Smart {
 
 	
@@ -35,29 +34,17 @@ public class Smart {
 	
 	
 	
-	public static void lstprofesora() {
-		
-		System.out.printf("%20s %25s, %2s, %20s \n", "Ime", "Trenutna Lokacija", "Broj", "Kako se profa oseca");		
-		
+	public  void lstprofesora() {
+		loadProf("listaprofesora.txt");
+		System.out.printf("%20s %25s, %2s, %20s \n", "Name Profesora", "Current Location", "Br.", "Fellings");		
+		for (int i = 0; i <this.listaobjekata.size(); i++) {
+			Objekat objekat = this.listaobjekata.get(i);
+			System.out.println(objekat);
+		}
 		
 	}
 	
 	
-	/*
-	public boolean dodavanjeTermina (TerminiOrd termin) {
-
-		for (int i = 0; i < listaTermina.size(); i++) {
-			TerminiOrd korisnikLista = this.listaTermina.get(i);
-			if (korisnikLista.getID() == termin.getID()) {
-				return false;
-			}
-		}
-
-		this.listaTermina.add(termin);
-		saveTermini("termini.txt");
-		return true;
-
-	}*/
 	
 	
 	public boolean dodavanjeProfesora(Objekat prof) {
@@ -69,10 +56,23 @@ public class Smart {
 			}
 		}
 		this.listaobjekata.add(prof);
+		saveProf("listaprofesora.txt");
 		return true;
 	}
 	
 	
+	public Objekat izmenaProfesora(Objekat objekat) {
+		for (int i = 0; i < this.listaobjekata.size(); i++) {
+			Objekat objekat2 = this.listaobjekata.get(i);
+			String Name = objekat2.getName();
+			if (Name.equalsIgnoreCase(objekat.getName())) {
+				Objekat kojisemenja = this.listaobjekata.set(i, objekat);
+				saveProf("listaprofesora.txt");
+				return kojisemenja;
+			}
+		}
+		return null;
+	}
 	
 	
 	
@@ -97,6 +97,23 @@ public class Smart {
 			
 		}
 		
+	}
+	
+	public Objekat profBrisanjeIme(Objekat idX) {
+
+		int index = -1;
+		for (int i = 0; i < this.listaobjekata.size(); i++) {
+			if (this.listaobjekata.get(i).getName().equalsIgnoreCase(idX.getName())) {
+				index = i;
+			}
+		}
+		if (index != -1) {
+			Objekat profesor = this.listaobjekata.remove(index);
+			System.out.println("Brisanje po imenu je uspesnu uradjeno");
+			saveProf("listaprofesora.txt");
+			return profesor;
+		}
+		return null;
 	}
 	
 	public void loadProf(String path) {

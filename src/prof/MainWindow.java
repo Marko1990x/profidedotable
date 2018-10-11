@@ -68,7 +68,7 @@ public class MainWindow {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		lblNewLabel = new JLabel("New label");
+		lblNewLabel = new JLabel("Ime Profesora");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 5;
 		gbc_lblNewLabel.fill = GridBagConstraints.VERTICAL;
@@ -86,7 +86,7 @@ public class MainWindow {
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1 = new JLabel("Lokacija");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.gridwidth = 5;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -103,7 +103,7 @@ public class MainWindow {
 		panel.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		
-		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2 = new JLabel("Broj");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.gridwidth = 5;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
@@ -120,7 +120,7 @@ public class MainWindow {
 		panel.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
-		lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3 = new JLabel("Profesor Osecaj");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.gridwidth = 5;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);

@@ -14,6 +14,16 @@ public class Objekat {
 	Objekat(){
 		
 	}
+	
+	
+
+
+	public Objekat(String name) {
+		super();
+		Name = name;
+	}
+
+
 
 
 	public Objekat(String name, String lokacija, int numberlocation, String profaOsecaj) {
