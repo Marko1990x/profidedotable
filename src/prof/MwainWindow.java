@@ -341,18 +341,18 @@ public class MwainWindow {
 						console5.init();
 						
 						System.out.println("--------------Pocetno-Stanje-------------\n");
-						System.out.println("ja se nalazi ispred spavace sobe ispered njega su neprovidna vrata \n");
-						System.out.println("Korak 2 - ja sa desnom rukom hvatam kvaku i okrecem je. \n");
-						System.out.println("Korak 3 - ja otvaram vrata i pustam kvaku, spustam ruku. \n");
-						System.out.println("Korak 4 - napravim park koraka napred dok nisam usao u sobu. \n");
-						System.out.println("Korak 5 - posmatram okolinu vidim da je prozor sa desne strane. \n");
-						System.out.println("Korak 6 - okrecem se 90 stepeni na desno. \n");
-						System.out.println("Korak 7 - koracam dok ne doljem do prozora. \n");
-						System.out.println("Korak 8 - ja podizem ruku hvatam kvaku prozora. \n");
+						System.out.println("ja se nalazi ispred spavace sobe ispered mene su neprovidna vrata \n");
+						System.out.println("Korak 1 - ja sa desnom rukom hvatam kvaku i okrecem je. \n");
+						System.out.println("Korak 2 - ja otvaram vrata i pustam kvaku, spustam ruku. \n");
+						System.out.println("Korak 3 - napravim park koraka napred dok nisam usao u sobu. \n");
+						System.out.println("Korak 4 - posmatram okolinu vidim da je prozor sa desne strane. \n");
+						System.out.println("Korak 5 - okrecem se 90 stepeni na desno. \n");
+						System.out.println("Korak 6 - koracam dok ne doljem do prozora. \n");
+						System.out.println("Korak 7 - ja podizem ruku hvatam kvaku prozora. \n");
 						System.out.println("Korak 8 - okrecem kvaku, otvaram prozor, pustam kvaku. \n");
-						System.out.println("Korak 8 - ja sam sad srecan jer sam kod prozora i ide svez vazduh. \n");
+						System.out.println("Korak 9 - ja sam sad srecan jer sam kod prozora i ide svez vazduh. \n");
 						
-						JOptionPane.showMessageDialog(null, "ja sam sada kod tabele proverava se ime", "provera", 1);
+						JOptionPane.showMessageDialog(null, "ja sam sada ispred tabele proverava se ime", "provera", 1);
 						
 						Objekat objekat3 = new Objekat(Name, locationY, 1, fellingY);
 						
@@ -374,6 +374,36 @@ public class MwainWindow {
 					case "4":
 						
 						JOptionPane.showMessageDialog(null, "Izabrana je četvrta opcija", "Option 4", 1);
+						
+						Console console7 = new Console();
+						console7.init();
+						
+						System.out.println("--------------Pocetno-Stanje-------------\n");
+						System.out.println("ja se nalazi ispred dnevne sobe ispered mene su providna vrata \n");
+						System.out.println("Korak 1 - posmatram okolinu vidim da je prozor sa unutar sobe pravo. \n");
+						System.out.println("Korak 2 - ja sa desnom rukom hvatam kvaku i okrecem je. \n");
+						System.out.println("Korak 3 - ja otvaram vrata i pustam kvaku, spustam ruku. \n");
+						System.out.println("Korak 4 - napravim par koraka napred dok nisam usao u sobu. \n");
+						System.out.println("Korak 6 - koracam pravo dok ne doljem do prozora. \n");
+						System.out.println("Korak 7 - ja podizem ruku hvatam kvaku prozora. \n");
+						System.out.println("Korak 9 - okrecem kvaku, otvaram prozor, pustam kvaku. \n");
+						System.out.println("Korak 10 - ja sam sad srecan jer sam kod prozora i ide svez vazduh. \n");
+						
+						JOptionPane.showMessageDialog(null, "ja sam sada ispred prozora proverava se ime", "provera", 1);
+						
+						Objekat objekat4 = new Objekat(Name, locationY, 1, fellingY);
+						
+						boolean provera4 = smart.dodavanjeProfesora(objekat4);
+						
+						if (provera4) {
+							JOptionPane.showMessageDialog(null, "Ja sam uspesno unet u listu podataka", "OK", 1);
+							Console console8 = new Console();
+							console8.init();
+							smart.lstprofesora();
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Ja nisam uspesno unet u listu podataka", "Greska", 1);
+						}
 
 						break;
 
