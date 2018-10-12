@@ -36,7 +36,7 @@ public class Smart {
 	
 	public  void lstprofesora() {
 		loadProf("listaprofesora.txt");
-		System.out.printf("%20s %25s, %2s, %20s \n", "Name Profesora", "Current Location", "Br.", "Fellings");		
+		System.out.printf("%20s %25s, %2s, %20s \n", "Name Profesora", "Current Location", "Br.", "Kako se profa oseca");		
 		for (int i = 0; i <this.listaobjekata.size(); i++) {
 			Objekat objekat = this.listaobjekata.get(i);
 			System.out.println(objekat);

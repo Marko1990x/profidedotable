@@ -128,6 +128,8 @@ public class MwainWindow {
 		panel.add(lblNewLabel);
 
 		fieldName = new JTextField();
+		fieldName.setForeground(new Color(220, 20, 60));
+		fieldName.setText("Ime Obavezno");
 		fieldName.setToolTipText("Unesite ime Profesora");
 		fieldName.setBounds(173, 31, 284, 22);
 		panel.add(fieldName);
@@ -170,6 +172,8 @@ public class MwainWindow {
 		panel.add(lblNewLabel_2);
 
 		fieldBroj = new JTextField();
+		fieldBroj.setForeground(new Color(220, 20, 60));
+		fieldBroj.setText("Unesite Broj obavezno");
 		fieldBroj.setToolTipText("Broj koraka.");
 		fieldBroj.setBounds(173, 91, 284, 22);
 		panel.add(fieldBroj);
@@ -178,7 +182,7 @@ public class MwainWindow {
 		JButton btnNewButton_2 = new JButton("Help ?");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Ovo polje je namenjeno samo za int tip podataka sto znaci samo broj.", "The help me button!", 1);
+				JOptionPane.showMessageDialog(null, "Ovo polje je namenjeno samo za int tip podataka sto znaci samo broj bez decimala i ostalih zezancija.", "The help me button!", 1);
 			}
 		});
 		btnNewButton_2.setToolTipText("Pokazuje koji tip podataka moze da se unese u ovo polje.");
@@ -249,6 +253,9 @@ public class MwainWindow {
 					locationX = "Profesor je ispred tabele";
 					felling = "Profesor je srecan jer je ispred tabele yey.";
 					
+					String locationY = "Ja sam sad ispred prozora";
+					String fellingY = "Ja sam sada srecan jer sam ispred prozora yey.";
+					
 					
 					smart.loadProf("listaprofesora.txt");
 					
@@ -261,14 +268,14 @@ public class MwainWindow {
 						console.init();
 						
 						System.out.println("--------------Pocetno-Stanje-------------\n");
-						System.out.println("Korak 1 - Profesor se nalazi ispred ucionice ispred njega su providna vrata. \n");
-						System.out.println("Korak 2 - Profesor posmatra okolinu i vidi da u ucionici sa leve strane je tabla. \n");
-						System.out.println("Korak 3 - profesor sa desnom rukom hvata kvaku i okrece je. \n");
-						System.out.println("Korak 4 - Profesor otvara vrata i pusta kvaku, spusta ruku. \n");
-						System.out.println("Korak 5 - Profesor ide napred dok mu se sa leve strane ne nalazi marker kod tabele. \n");
-						System.out.println("Korak 6 - Profesor hvata marker sa levom rukom i podize ruku na nivo tabele \n");
-						System.out.println("Korak 7 - Profesor pise bravo na tabeli spusta ruku ostavlja marker. \n");
-						System.out.println("Korak 8 - Profesor je sada srecan jer je dosao do tabele. \n");
+						System.out.println("Profesor se nalazi ispred ucionice ispred njega su providna vrata. \n");
+						System.out.println("Korak 1 - Profesor posmatra okolinu i vidi da u ucionici sa leve strane je tabla. \n");
+						System.out.println("Korak 2 - profesor sa desnom rukom hvata kvaku i okrece je. \n");
+						System.out.println("Korak 3 - Profesor otvara vrata i pusta kvaku, spusta ruku. \n");
+						System.out.println("Korak 4 - Profesor ide napred dok mu se sa leve strane ne nalazi marker kod tabele. \n");
+						System.out.println("Korak 5 - Profesor hvata marker sa levom rukom i podize ruku na nivo tabele \n");
+						System.out.println("Korak 6 - Profesor pise bravo na tabeli spusta ruku ostavlja marker. \n");
+						System.out.println("Korak 7 - Profesor je sada srecan jer je dosao do tabele. \n");
 						
 						JOptionPane.showMessageDialog(null, "profesor je sada kod tabele proverava se ime", "provera", 1);
 						
@@ -292,12 +299,75 @@ public class MwainWindow {
 					case "2":
 						
 						JOptionPane.showMessageDialog(null, "Izabrana je druga opcija", "Option 2", 1);
+						
+						Console console3 = new Console();
+						console3.init();
+						
+						System.out.println("--------------Pocetno-Stanje-------------\n");
+						System.out.println("Profesor sedi na svom mestu. \n");
+						System.out.println("Korak 2 - Profesor posmatra okolinu i vidi da je iza njega tabela. \n");
+						System.out.println("Korak 3 - profesor ustaje sa svog mesta. \n");
+						System.out.println("Korak 4 - Profesor profesor se okrece dok se ne nadje gledajuci u tabelu. \n");
+						System.out.println("Korak 5 - Profesor profesor napravi par koraka dok nije kod tabele \n");
+						System.out.println("Korak 6 - Profesor hvata marker sa desnom rukom i podize ruku na nivo tabele \n");
+						System.out.println("Korak 7 - Profesor pise bravo na tabeli spusta ruku ostavlja marker. \n");
+						System.out.println("Korak 8 - Profesor je sada srecan jer je dosao do tabele. \n");
+						
+						JOptionPane.showMessageDialog(null, "profesor je sada kod tabele proverava se ime", "provera", 1);
+						
+						Objekat objekat2 = new Objekat(Name, locationX, 1, felling);
+						
+						boolean provera2 = smart.dodavanjeProfesora(objekat2);
+						
+						if (provera2) {
+							JOptionPane.showMessageDialog(null, "Profesor je uspesno unet u listu podataka", "OK", 1);
+							Console console4 = new Console();
+							console4.init();
+							smart.lstprofesora();
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Profesor nije uspesno unet u listu podataka", "Greska", 1);
+						}
+						
+						
 
 						break;
 
 					case "3":
 						
 						JOptionPane.showMessageDialog(null, "Izabrana je Treca opcija", "Option 3", 1);
+						
+						Console console5 = new Console();
+						console5.init();
+						
+						System.out.println("--------------Pocetno-Stanje-------------\n");
+						System.out.println("ja se nalazi ispred spavace sobe ispered njega su neprovidna vrata \n");
+						System.out.println("Korak 2 - ja sa desnom rukom hvatam kvaku i okrecem je. \n");
+						System.out.println("Korak 3 - ja otvaram vrata i pustam kvaku, spustam ruku. \n");
+						System.out.println("Korak 4 - napravim park koraka napred dok nisam usao u sobu. \n");
+						System.out.println("Korak 5 - posmatram okolinu vidim da je prozor sa desne strane. \n");
+						System.out.println("Korak 6 - okrecem se 90 stepeni na desno. \n");
+						System.out.println("Korak 7 - koracam dok ne doljem do prozora. \n");
+						System.out.println("Korak 8 - ja podizem ruku hvatam kvaku prozora. \n");
+						System.out.println("Korak 8 - okrecem kvaku, otvaram prozor, pustam kvaku. \n");
+						System.out.println("Korak 8 - ja sam sad srecan jer sam kod prozora i ide svez vazduh. \n");
+						
+						JOptionPane.showMessageDialog(null, "ja sam sada kod tabele proverava se ime", "provera", 1);
+						
+						Objekat objekat3 = new Objekat(Name, locationY, 1, fellingY);
+						
+						boolean provera3 = smart.dodavanjeProfesora(objekat3);
+						
+						if (provera3) {
+							JOptionPane.showMessageDialog(null, "Ja sam uspesno unet u listu podataka", "OK", 1);
+							Console console6 = new Console();
+							console6.init();
+							smart.lstprofesora();
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Ja nisam uspesno unet u listu podataka", "Greska", 1);
+						}
+						
 
 						break;
 
