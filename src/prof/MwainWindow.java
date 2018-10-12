@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import java.awt.GridBagLayout;
 import java.awt.Image;
 
@@ -19,8 +22,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -62,6 +69,39 @@ public class MwainWindow {
 	public MwainWindow() {
 		initialize();
 	}
+	
+	class Console {
+
+		final JFrame frame = new JFrame();
+		public Console() {
+			JTextArea textArea = new JTextArea(24, 80);
+			textArea.setBackground(Color.BLACK);
+			textArea.setForeground(Color.LIGHT_GRAY);
+			textArea.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+			System.setOut(new PrintStream(new OutputStream() {
+
+				@Override
+				public void write(int b) throws IOException {
+					textArea.append(String.valueOf((char) b));
+
+				}
+			}));
+			frame.getContentPane().add(textArea);
+			frame.getContentPane().add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+					JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS));
+		}
+		public void init() {
+			frame.pack();
+			frame.setSize(1200, 400);
+			frame.setVisible(true);
+			frame.setResizable(false);
+		}
+		public JFrame geJframe() {
+			return frame;
+		}
+
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -251,15 +291,69 @@ public class MwainWindow {
 		btnNewButton_5.setToolTipText("unos objekta u textualnu databasu");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				String id = fieldBroj.getText().trim();
+				
+				String Name = fieldName.getText().trim();
+				String Location = fieldLocation.getText().trim();
+				String osecaj = fieldOsecaj.getText().trim();
+				
+				smart.loadProf("listaprofesora.txt");
+				
+				if (Test.isNumber(id) == true) {
+					
+					int x = Integer.parseInt(id);
+
+					Objekat objekat = new Objekat(Name, Location, x, osecaj);
+					
+					boolean provera = smart.dodavanjeProfesora(objekat);
+					
+					if (provera) {
+						JOptionPane.showMessageDialog(null, "Profesor je uspesno unet u listu podataka", "OK", 1);
+					}else {
+						JOptionPane.showMessageDialog(null, "Profesor nije uspesno unet u listu podataka", "Greska", 1);
+					}
+					
+
+				} else {
+					JOptionPane.showMessageDialog(null, "nije unet broj u polje", "Greska Unesite broj", 2);
+				}
+				
 			}
 		});
 		panel_1.add(btnNewButton_5);
 
 		JButton btnNewButton_6 = new JButton("Lista Objekata");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Console console = new Console();
+				console.init();
+				smart.lstprofesora();
+			}
+		});
 		btnNewButton_6.setBounds(12, 89, 177, 25);
 		panel_1.add(btnNewButton_6);
 
 		JButton btnNewButton_7 = new JButton("Brisanje objekta Ime");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String idX = null;
+			//	System.out.println("Unesite ime profesora za brisanje");
+				idX = fieldName.getText().trim();
+				
+				Objekat objekat = new Objekat(idX);
+				
+				Objekat provera = smart.profBrisanjeIme(objekat);
+				if (provera == null) {
+					// System.out.println("Zadato ime ne postoji u listi.");
+					JOptionPane.showMessageDialog(null, "Ime profesora se ne nalazi u listi", "Greska pri unosu imena ili ime ne posatoji", 1);
+				}else {
+					JOptionPane.showMessageDialog(null, "Profesor je izbrisan sa liste", "ok", 1);
+				}
+			}
+		});
 		btnNewButton_7.setBounds(12, 127, 177, 25);
 		panel_1.add(btnNewButton_7);
 
