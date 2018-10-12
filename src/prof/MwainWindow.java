@@ -28,6 +28,7 @@ import java.io.PrintStream;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -209,6 +210,38 @@ public class MwainWindow {
 		btnNewButton_3.setToolTipText("Pokazuje koji tip podataka moze da se unese u ovo polje.");
 		btnNewButton_3.setBounds(462, 120, 119, 25);
 		panel.add(btnNewButton_3);
+		
+		JButton btnNewButton_8 = new JButton("Slika 1");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				/*
+				 * RadnaStolicaFrame rsFrame = new RadnaStolicaFrame();
+				rsFrame.setVisible(true);
+				rsFrame.setResizable(false);
+				 */
+				
+				Profesor prFrame = new Profesor();
+				prFrame.setVisible(true);
+				prFrame.setResizable(false);
+				
+				
+			}
+		});
+		btnNewButton_8.setBounds(173, 146, 97, 25);
+		panel.add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("Slika 2");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ja prFrameX = new Ja();
+				prFrameX.setVisible(true);
+				prFrameX.setResizable(false);
+				
+			}
+		});
+		btnNewButton_9.setBounds(282, 146, 97, 25);
+		panel.add(btnNewButton_9);
 
 		JLabel label = new JLabel("");
 		Image img2 = new ImageIcon(this.getClass().getResource("/b.jpg")).getImage(); 
@@ -289,6 +322,11 @@ public class MwainWindow {
 							console2.init();
 							smart.lstprofesora();
 							
+							JOptionPane.showMessageDialog(null, "sledi slika profesora", "Slika", 1);
+							Profesor prFrame = new Profesor();
+							prFrame.setVisible(true);
+							prFrame.setResizable(false);
+							
 						}else {
 							JOptionPane.showMessageDialog(null, "Profesor nije uspesno unet u listu podataka", "Greska", 1);
 						}
@@ -324,6 +362,11 @@ public class MwainWindow {
 							Console console4 = new Console();
 							console4.init();
 							smart.lstprofesora();
+							
+							JOptionPane.showMessageDialog(null, "sledi slika profesora", "Slika", 1);
+							Profesor prFrame = new Profesor();
+							prFrame.setVisible(true);
+							prFrame.setResizable(false);
 							
 						}else {
 							JOptionPane.showMessageDialog(null, "Profesor nije uspesno unet u listu podataka", "Greska", 1);
@@ -364,6 +407,12 @@ public class MwainWindow {
 							console6.init();
 							smart.lstprofesora();
 							
+							JOptionPane.showMessageDialog(null, "sledi moja slika", "Slika", 1);
+							
+							Ja prFrameX = new Ja();
+							prFrameX.setVisible(true);
+							prFrameX.setResizable(false);
+							
 						}else {
 							JOptionPane.showMessageDialog(null, "Ja nisam uspesno unet u listu podataka", "Greska", 1);
 						}
@@ -400,6 +449,12 @@ public class MwainWindow {
 							Console console8 = new Console();
 							console8.init();
 							smart.lstprofesora();
+							
+							JOptionPane.showMessageDialog(null, "sledi moja slika", "Slika", 1);
+							
+							Ja prFrameX = new Ja();
+							prFrameX.setVisible(true);
+							prFrameX.setResizable(false);
 							
 						}else {
 							JOptionPane.showMessageDialog(null, "Ja nisam uspesno unet u listu podataka", "Greska", 1);
