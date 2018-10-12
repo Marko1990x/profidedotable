@@ -92,7 +92,7 @@ public class MwainWindow {
 		}
 		public void init() {
 			frame.pack();
-			frame.setSize(1200, 400);
+			frame.setSize(1200, 800);
 			frame.setVisible(true);
 			frame.setResizable(false);
 		}
@@ -242,11 +242,49 @@ public class MwainWindow {
 
 					String answer = number;
 					
+					String Name = fieldName.getText().trim();
+					String locationX = null;
+					String felling = null;
+					
+					locationX = "Profesor je ispred tabele";
+					felling = "Profesor je srecan jer je ispred tabele yey.";
+					
+					
+					smart.loadProf("listaprofesora.txt");
+					
 					switch (answer) {
 					case "1":
 						
 						JOptionPane.showMessageDialog(null, "Izabrana je prva opcija", "Option 1", 1);
 						
+						Console console = new Console();
+						console.init();
+						
+						System.out.println("--------------Pocetno-Stanje-------------\n");
+						System.out.println("Korak 1 - Profesor se nalazi ispred ucionice ispred njega su providna vrata. \n");
+						System.out.println("Korak 2 - Profesor posmatra okolinu i vidi da u ucionici sa leve strane je tabla. \n");
+						System.out.println("Korak 3 - profesor sa desnom rukom hvata kvaku i okrece je. \n");
+						System.out.println("Korak 4 - Profesor otvara vrata i pusta kvaku, spusta ruku. \n");
+						System.out.println("Korak 5 - Profesor ide napred dok mu se sa leve strane ne nalazi marker kod tabele. \n");
+						System.out.println("Korak 6 - Profesor hvata marker sa levom rukom i podize ruku na nivo tabele \n");
+						System.out.println("Korak 7 - Profesor pise bravo na tabeli spusta ruku ostavlja marker. \n");
+						System.out.println("Korak 8 - Profesor je sada srecan jer je dosao do tabele. \n");
+						
+						JOptionPane.showMessageDialog(null, "profesor je sada kod tabele proverava se ime", "provera", 1);
+						
+						Objekat objekat = new Objekat(Name, locationX, 1, felling);
+						
+						boolean provera = smart.dodavanjeProfesora(objekat);
+						
+						if (provera) {
+							JOptionPane.showMessageDialog(null, "Profesor je uspesno unet u listu podataka", "OK", 1);
+							Console console2 = new Console();
+							console2.init();
+							smart.lstprofesora();
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Profesor nije uspesno unet u listu podataka", "Greska", 1);
+						}
 						
 
 						break;
